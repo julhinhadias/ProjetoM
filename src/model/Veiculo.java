@@ -1,5 +1,5 @@
 package model;
-//oi merda aqui pra fazer bosta
+//oi merda aqui pra fazer bosta kkkkkkk
 public abstract class Veiculo {
 
     private int id;
