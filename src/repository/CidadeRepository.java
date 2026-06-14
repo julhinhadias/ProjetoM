@@ -16,9 +16,7 @@ public class CidadeRepository {
 
         Cidade[] novoArray = new Cidade[cidades.length * 2];
 
-        for (int i = 0; i < cidades.length; i++) {
-            novoArray[i] = cidades[i];
-        }
+        System.arraycopy(cidades, 0, novoArray, 0, cidades.length);
 
         cidades = novoArray;
     }

@@ -40,12 +40,12 @@ public class VeiculoEletrico extends Veiculo {
 
     @Override
     public String toString() {
-        return "Veiculo Eletrico{" +
+        return "Veiculo Eletrico" +
                 "id=" + getId() +
-                ", modelo='" + getModelo() + '\'' +
-                ", autonomiaMaxima=" + getAutonomiaMaxima() +
-                ", bateria=" + getCargaBateriaAtual() +
-                ", tipoConector='" + tipoConector + '\'' +
+                "- modelo='" + getModelo() + '\'' +
+                "- autonomiaMaxima=" + getAutonomiaMaxima() +
+                "- bateria=" + getCargaBateriaAtual() +
+                "- tipoConector='" + tipoConector + '\'' +
                 '}';
     }
 }

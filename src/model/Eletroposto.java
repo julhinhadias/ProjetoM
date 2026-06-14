@@ -97,7 +97,7 @@ public class Eletroposto {
     @Override
     public String toString() {
         return id + " - " + nome +
-                " | Cidade ID: " + cidadeId +
-                " | Potência: " + potenciaCargaKw + " kW";
+                " - Cidade ID: " + cidadeId +
+                " - Potência: " + potenciaCargaKw + " kW";
     }
 }

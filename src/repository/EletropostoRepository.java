@@ -11,14 +11,10 @@ public class EletropostoRepository {
         eletropostos = new Eletroposto[10];
         quantidade = 0;
     }
-
     private void aumentarCapacidade() {
-
         Eletroposto[] novoArray = new Eletroposto[eletropostos.length * 2];
 
-        for (int i = 0; i < eletropostos.length; i++) {
-            novoArray[i] = eletropostos[i];
-        }
+        System.arraycopy(eletropostos, 0, novoArray, 0, eletropostos.length);
 
         eletropostos = novoArray;
     }
@@ -74,14 +70,11 @@ public class EletropostoRepository {
                 return true;
             }
         }
-
         return false;
     }
-
     public Eletroposto[] listar() {
         return eletropostos;
     }
-
     public int getQuantidade() {
         return quantidade;
     }

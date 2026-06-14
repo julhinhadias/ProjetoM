@@ -31,7 +31,7 @@ public class EletropostoController {
         int cidadeId = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Conectores : ");
+        System.out.print("Conectores disponíveis : ");
         String conectores = sc.nextLine();
 
         System.out.print("Potência: ");
@@ -51,12 +51,12 @@ public class EletropostoController {
 
         repository.cadastrar(eletroposto);
 
-        System.out.println("Eletroposto cadastrado.");
+        System.out.println("Eletroposto cadastrado!");
     }
 
     public void buscar() {
 
-        System.out.print("ID: ");
+        System.out.print("id: ");
         int id = sc.nextInt();
 
         Eletroposto e = repository.buscarPorId(id);
@@ -64,7 +64,7 @@ public class EletropostoController {
         if (e != null) {
             System.out.println(e);
         } else {
-            System.out.println("Eletroposto nao encontrado.");
+            System.out.println("Eletroposto não encontrado!");
         }
     }
 
@@ -79,39 +79,39 @@ public class EletropostoController {
 
     public void excluir() {
 
-        System.out.print("ID: ");
+        System.out.print("id: ");
         int id = sc.nextInt();
 
         if (repository.excluir(id)) {
-            System.out.println("Eletroposto removido.");
+            System.out.println("Eletroposto excluído.");
         } else {
-            System.out.println("Eletroposto nao encontrado.");
+            System.out.println("Eletroposto não encontrado.");
         }
     }
 
     public void atualizar() {
 
-        System.out.print("ID: ");
+        System.out.print("Novo id: ");
         int id = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Nome: ");
+        System.out.print("Novo Nome: ");
         String nome = sc.nextLine();
 
-        System.out.print("Localizacao: ");
+        System.out.print("Nova Localização: ");
         String localizacao = sc.nextLine();
 
-        System.out.print("Cidade ID: ");
+        System.out.print("Nova id da cidade: ");
         int cidadeId = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Conectores: ");
+        System.out.print("Conectores disponíveis: ");
         String conectores = sc.nextLine();
 
-        System.out.print("Potencia: ");
+        System.out.print("Potência: ");
         double potencia = sc.nextDouble();
 
-        System.out.print("Preco: ");
+        System.out.print("Novo Preço: ");
         double preco = sc.nextDouble();
 
         System.out.print("Vagas: ");
@@ -126,7 +126,7 @@ public class EletropostoController {
         if (repository.atualizar(id, eletroposto)) {
             System.out.println("Atualizado.");
         } else {
-            System.out.println("Nao encontrado.");
+            System.out.println("Não encontrado.");
         }
     }
 }

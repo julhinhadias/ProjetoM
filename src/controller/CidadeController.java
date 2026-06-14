@@ -17,7 +17,7 @@ public class CidadeController {
 
     public void cadastrar() {
 
-        System.out.print("ID: ");
+        System.out.print("id: ");
         int id = sc.nextInt();
         sc.nextLine();
 
@@ -27,7 +27,7 @@ public class CidadeController {
         System.out.print("Estado: ");
         String estado = sc.nextLine();
 
-        System.out.print("Distancia da capital: ");
+        System.out.print("Distância da capital: ");
         double distancia = sc.nextDouble();
 
         Cidade cidade = new Cidade(id, nome, estado, distancia);
@@ -39,7 +39,7 @@ public class CidadeController {
 
     public void buscar() {
 
-        System.out.print("ID da cidade: ");
+        System.out.print("id da cidade: ");
         int id = sc.nextInt();
 
         Cidade cidade = repository.buscarPorId(id);
@@ -47,7 +47,7 @@ public class CidadeController {
         if (cidade != null) {
             System.out.println(cidade);
         } else {
-            System.out.println("Cidade nao encontrada.");
+            System.out.println("Cidade não encontrada.");
         }
     }
 
@@ -62,7 +62,7 @@ public class CidadeController {
 
     public void excluir() {
 
-        System.out.print("ID da cidade: ");
+        System.out.print("id da cidade: ");
         int id = sc.nextInt();
 
         if (repository.excluir(id)) {
@@ -74,7 +74,7 @@ public class CidadeController {
 
     public void atualizar() {
 
-        System.out.print("ID da cidade: ");
+        System.out.print("Novo id da cidade: ");
         int id = sc.nextInt();
         sc.nextLine();
 

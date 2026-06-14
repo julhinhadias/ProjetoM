@@ -16,9 +16,7 @@ public class VeiculoRepository {
 
         Veiculo[] novoArray = new Veiculo[veiculos.length * 2];
 
-        for (int i = 0; i < veiculos.length; i++) {
-            novoArray[i] = veiculos[i];
-        }
+        System.arraycopy(veiculos, 0, novoArray, 0, veiculos.length);
 
         veiculos = novoArray;
     }
@@ -45,17 +43,16 @@ public class VeiculoRepository {
         return null;
     }
 
-    public boolean atualizar(int id, Veiculo novoVeiculo) {
+    public void atualizar(int id, Veiculo novoVeiculo) {
 
         for (int i = 0; i < quantidade; i++) {
 
             if (veiculos[i].getId() == id) {
                 veiculos[i] = novoVeiculo;
-                return true;
+                return;
             }
         }
 
-        return false;
     }
 
     public boolean excluir(int id) {

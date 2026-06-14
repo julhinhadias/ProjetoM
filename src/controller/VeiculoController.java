@@ -25,16 +25,16 @@ public class VeiculoController {
         int tipo = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("ID: ");
+        System.out.print("id: ");
         int id = sc.nextInt();
         sc.nextLine();
 
         if (repository.buscarPorId(id) != null) {
-            System.out.println("Ja existe um veiculo com esse ID.");
+            System.out.println("Já existe um veiculo com esse ID.");
             return;
         }
 
-        System.out.print("Modelo: ");
+        System.out.print("Modelo do veículo: ");
         String modelo = sc.nextLine();
 
         System.out.print("Autonomia maxima (km): ");
@@ -99,16 +99,16 @@ public class VeiculoController {
 
         } else {
 
-            System.out.println("Tipo invalido.");
+            System.out.println("Tipo inválido.");
             return;
         }
 
-        System.out.println("Veiculo cadastrado com sucesso.");
+        System.out.println("Veiculo cadastrado.");
     }
 
     public void buscar() {
 
-        System.out.print("ID do veiculo: ");
+        System.out.print("id do veiculo: ");
         int id = sc.nextInt();
 
         Veiculo veiculo = repository.buscarPorId(id);
@@ -116,7 +116,7 @@ public class VeiculoController {
         if (veiculo != null) {
             System.out.println(veiculo);
         } else {
-            System.out.println("Veiculo nao encontrado.");
+            System.out.println("Veiculo não encontrado.");
         }
     }
 
@@ -125,7 +125,7 @@ public class VeiculoController {
         Veiculo[] lista = repository.listar();
 
         if (repository.getQuantidade() == 0) {
-            System.out.println("Nenhum veiculo cadastrado.");
+            System.out.println("Neenhum veiculo cadastrado.");
             return;
         }
 
@@ -136,19 +136,19 @@ public class VeiculoController {
 
     public void excluir() {
 
-        System.out.print("ID do veiculo: ");
+        System.out.print("id do veiculo: ");
         int id = sc.nextInt();
 
         if (repository.excluir(id)) {
-            System.out.println("Veiculo removido.");
+            System.out.println("Veiculo excluído.");
         } else {
-            System.out.println("Veiculo nao encontrado.");
+            System.out.println("Veiculo não encontrado.");
         }
     }
 
     public void atualizar() {
 
-        System.out.print("ID do veiculo que deseja atualizar: ");
+        System.out.print("id do veiculo que deseja atualizar: ");
         int id = sc.nextInt();
 
         Veiculo antigo = repository.buscarPorId(id);
