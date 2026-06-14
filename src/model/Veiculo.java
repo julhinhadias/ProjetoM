@@ -1,5 +1,5 @@
 package model;
-//oi merda aqui pra fazer bosta kkkkkkk
+
 public abstract class Veiculo {
 
     private int id;
@@ -12,6 +12,7 @@ public abstract class Veiculo {
     public Veiculo(int id, String modelo, double autonomiaMaxima,
                    double cargaBateriaAtual, double consumoKwhPorKm,
                    int tempoRecargaCompleta) {
+
 
         this.id = id;
         this.modelo = modelo;

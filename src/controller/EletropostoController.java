@@ -17,27 +17,27 @@ public class EletropostoController {
 
     public void cadastrar() {
 
-        System.out.print("ID: ");
+        System.out.print("id: ");
         int id = sc.nextInt();
         sc.nextLine();
 
         System.out.print("Nome: ");
         String nome = sc.nextLine();
 
-        System.out.print("Localizacao: ");
+        System.out.print("Localização: ");
         String localizacao = sc.nextLine();
 
-        System.out.print("ID da cidade: ");
+        System.out.print("id da cidade: ");
         int cidadeId = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Conectores: ");
+        System.out.print("Conectores : ");
         String conectores = sc.nextLine();
 
-        System.out.print("Potencia: ");
+        System.out.print("Potência: ");
         double potencia = sc.nextDouble();
 
-        System.out.print("Preco por kWh: ");
+        System.out.print("Preço por kWh: ");
         double preco = sc.nextDouble();
 
         System.out.print("Vagas: ");

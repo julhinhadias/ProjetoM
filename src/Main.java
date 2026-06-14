@@ -44,12 +44,15 @@ public class Main {
 
         do {
 
-            System.out.println("\n===== GREEN ROUTE =====");
-            System.out.println("1 - Gerenciar Dados");
-            System.out.println("2 - Simular Viagem");
-            System.out.println("0 - Sair");
-            System.out.print("Escolha: ");
+            System.out.println("\nBEM VINDO AO GREEN ROUTE: ");
+            System.out.println("O que deseja acessar? ");
+            System.out.println("------------------------");
+            System.out.println("1 - Crud do sistema: ");
+            System.out.println("2 - Simulação de viagem: ");
+            System.out.println("0 - Sair ");
+            System.out.println("------------------------");
 
+            System.out.print("Escolha: ");
             opcao = sc.nextInt();
 
             switch (opcao) {
@@ -65,10 +68,10 @@ public class Main {
 
                 case 2:
 
-                    System.out.print("ID do veiculo: ");
+                    System.out.print("id do veiculo: ");
                     int veiculoId = sc.nextInt();
 
-                    System.out.print("ID da cidade destino: ");
+                    System.out.print("id da cidade do seu destino: ");
                     int cidadeId = sc.nextInt();
 
                     rotaController.simularViagem(
@@ -79,11 +82,11 @@ public class Main {
                     break;
 
                 case 0:
-                    System.out.println("Sistema encerrado.");
+                    System.out.println("Saindo...");
                     break;
 
                 default:
-                    System.out.println("Opcao invalida.");
+                    System.out.println("Opção invalida.");
             }
 
         } while (opcao != 0);
@@ -100,12 +103,13 @@ public class Main {
         int opcao;
 
         do {
-
-            System.out.println("\n===== GERENCIAR DADOS =====");
+            System.out.println("---------------------------");
+            System.out.println("\nGerenciamento de Dados: ");
             System.out.println("1 - Veiculos");
             System.out.println("2 - Cidades");
             System.out.println("3 - Eletropostos");
             System.out.println("0 - Voltar");
+            System.out.println("---------------------------");
             System.out.print("Escolha: ");
 
             opcao = sc.nextInt();
@@ -128,7 +132,7 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Opcao invalida.");
+                    System.out.println("Opção inválida.");
             }
 
         } while (opcao != 0);
@@ -142,13 +146,15 @@ public class Main {
 
         do {
 
-            System.out.println("\n===== VEICULOS =====");
+            System.out.println("\nVEICULOS ");
+
             System.out.println("1 - Cadastrar");
             System.out.println("2 - Buscar");
             System.out.println("3 - Atualizar");
             System.out.println("4 - Excluir");
             System.out.println("5 - Listar");
             System.out.println("0 - Voltar");
+
             System.out.print("Escolha: ");
 
             opcao = sc.nextInt();
@@ -179,7 +185,7 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Opcao invalida.");
+                    System.out.println("Opção inválida.");
             }
 
         } while (opcao != 0);
@@ -193,7 +199,7 @@ public class Main {
 
         do {
 
-            System.out.println("\n===== CIDADES =====");
+            System.out.println("\nCIDADES");
             System.out.println("1 - Cadastrar");
             System.out.println("2 - Buscar");
             System.out.println("3 - Atualizar");
@@ -230,7 +236,7 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Opcao invalida.");
+                    System.out.println("Opção inválida.");
             }
 
         } while (opcao != 0);
@@ -244,7 +250,7 @@ public class Main {
 
         do {
 
-            System.out.println("\n===== ELETROPOSTOS =====");
+            System.out.println("\nELETROPOSTOS");
             System.out.println("1 - Cadastrar");
             System.out.println("2 - Buscar");
             System.out.println("3 - Atualizar");
@@ -281,7 +287,7 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Opcao invalida.");
+                    System.out.println("Opção inválida.");
             }
 
         } while (opcao != 0);

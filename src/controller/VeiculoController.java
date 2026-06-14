@@ -19,8 +19,8 @@ public class VeiculoController {
 
     public void cadastrar() {
 
-        System.out.println("\n1 - Veiculo Eletrico");
-        System.out.println("2 - Veiculo Hibrido");
+        System.out.println("\n1 -Veiculo Eletrico");
+        System.out.println("2 -Veiculo Hibrido");
         System.out.print("Escolha: ");
         int tipo = sc.nextInt();
         sc.nextLine();

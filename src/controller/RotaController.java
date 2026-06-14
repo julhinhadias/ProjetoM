@@ -33,7 +33,7 @@ public class RotaController {
 
         if (veiculo == null || cidade == null) {
 
-            System.out.println("Dados invalidos.");
+            System.out.println("Dadoss inválidos.");
             return;
         }
 
@@ -42,11 +42,11 @@ public class RotaController {
 
         if (autonomia >= cidade.getDistanciaDaCapital()) {
 
-            System.out.println("Viagem possivel.");
+            System.out.println("A viagem é possivel.");
         } else {
 
-            System.out.println("Recarga necessaria.");
-            System.out.println("Eletropostos encontrados:");
+            System.out.println("É necessário uma recarga.");
+            System.out.println("Eletropostos que foram encontrados: ");
 
             Eletroposto[] postos =
                     eletropostoRepository.listar();
