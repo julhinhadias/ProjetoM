@@ -28,9 +28,9 @@ public class VeiculoRepository {
         }
 
         veiculos[quantidade] = veiculo;
-        quantidade++;
     }
 
+    quantidade++;
     public Veiculo buscarPorId(int id) {
 
         for (int i = 0; i < quantidade; i++) {

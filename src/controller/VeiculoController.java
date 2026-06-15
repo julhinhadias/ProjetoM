@@ -40,7 +40,7 @@ public class VeiculoController {
         System.out.print("Autonomia maxima (km): ");
         double autonomia = sc.nextDouble();
 
-        System.out.print("Carga da bateria (%): ");
+        System.out.print("Carga da bateria atual (%): ");
         double bateria = sc.nextDouble();
 
         System.out.print("Consumo kWh/km: ");
@@ -166,13 +166,13 @@ public class VeiculoController {
         System.out.print("Autonomia maxima: ");
         double autonomia = sc.nextDouble();
 
-        System.out.print("Carga bateria: ");
+        System.out.print("Carga bateria atual (%): ");
         double bateria = sc.nextDouble();
 
         System.out.print("Consumo kWh/km: ");
         double consumo = sc.nextDouble();
 
-        System.out.print("Tempo recarga completa: ");
+        System.out.print("Tempo recarga completa (min): ");
         int tempoRecarga = sc.nextInt();
         sc.nextLine();
 
@@ -181,7 +181,7 @@ public class VeiculoController {
             System.out.print("Tipo conector: ");
             String conector = sc.nextLine();
 
-            System.out.print("Tempo recarga rapida: ");
+            System.out.print("Tempo recarga rapida (min): ");
             int tempoRapido = sc.nextInt();
 
             VeiculoEletrico novo = new VeiculoEletrico(
