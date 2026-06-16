@@ -119,21 +119,26 @@ public class VeiculoController {
             System.out.println("Veiculo não encontrado.");
         }
     }
+public void listar() {
 
-    public void listar() {
+    Veiculo[] lista = repository.listar();
 
-        Veiculo[] lista = repository.listar();
-
-        if (repository.getQuantidade() == 0) {
-            System.out.println("Neenhum veiculo cadastrado.");
-            return;
-        }
-
-        for (int i = 0; i < repository.getQuantidade(); i++) {
-            System.out.println(lista[i]);
-        }
+    if (repository.getQuantidade() == 0) {
+        System.out.println("Nenhum veículo cadastrado.");
+        return;
     }
 
+    for (int i = 0; i < repository.getQuantidade(); i++) {
+
+        System.out.println("ID: " + lista[i].getId());
+        System.out.println("Modelo: " + lista[i].getModelo());
+        System.out.println("Autonomia Máxima: " + lista[i].getAutonomiaMaxima() + " km");
+        System.out.println("Carga da Bateria: " + lista[i].getCargaBateriaAtual() + "%");
+        System.out.println("Consumo: " + lista[i].getConsumoKwhPorKm() + " kWh/km");
+        System.out.println("Tempo de Recarga Completa: " + lista[i].getTempoRecargaCompleta() + " min");
+        System.out.println();
+    }
+}
     public void excluir() {
 
         System.out.print("id do veiculo: ");
