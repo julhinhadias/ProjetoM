@@ -33,7 +33,7 @@ public class RotaController {
 
         if (veiculo == null || cidade == null) {
 
-            System.out.println("Dadoss inválidos.");
+            System.out.println("Dados inválidos.");
             return;
         }
 
@@ -42,11 +42,11 @@ public class RotaController {
 
         if (autonomia >= cidade.getDistanciaDaCapital()) {
 
-            System.out.println("A viagem é possivel.");
+            System.out.println("A viagem é possível.");
         } else {
 
-            System.out.println("É necessário uma recarga.");
-            System.out.println("Eletropostos que foram encontrados: ");
+            System.out.println("É necessária uma recarga.");
+            System.out.println("Eletropostos disponíveis:");
 
             Eletroposto[] postos =
                     eletropostoRepository.listar();
@@ -55,9 +55,17 @@ public class RotaController {
                  i < eletropostoRepository.getQuantidade();
                  i++) {
 
-                if (postos[i].getCidadeId() == cidadeId) {
-                    System.out.println(postos[i]);
-                }
+                Eletroposto posto = postos[i];
+
+                Cidade cidadePosto =
+                        cidadeRepository.buscarPorId(
+                                posto.getCidadeId());
+
+                System.out.println(
+                        posto.getNome()
+                                + " - "
+                                + cidadePosto.getNome()
+                );
             }
         }
     }
