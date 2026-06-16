@@ -71,7 +71,7 @@ public class EletropostoController {
     public void listar() {
 
         Eletroposto[] lista = repository.listar();
-
+//AJEITEI AQUI
         if (repository.getQuantidade() == 0) {
             System.out.println("Nenhum eletroposto cadastrado.");
             return;

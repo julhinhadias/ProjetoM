@@ -120,7 +120,7 @@ public class VeiculoController {
         }
     }
 public void listar() {
-
+//E AQ
     Veiculo[] lista = repository.listar();
 
     if (repository.getQuantidade() == 0) {

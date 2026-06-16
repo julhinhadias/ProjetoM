@@ -44,7 +44,7 @@ public class RotaController {
 
             System.out.println("A viagem é possível.");
         } else {
-
+//AJEITEI AQ TBBBB
             System.out.println("É necessária uma recarga.");
             System.out.println("Eletropostos disponíveis:");
 
