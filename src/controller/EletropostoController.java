@@ -62,10 +62,17 @@ public class EletropostoController {
         Eletroposto e = repository.buscarPorId(id);
 
         if (e != null) {
-            System.out.println(e);
-        } else {
-            System.out.println("Eletroposto não encontrado!");
-        }
+
+            System.out.println("ID: " + e.getId());
+            System.out.println("Nome: " + e.getNome());
+            System.out.println("Localização: " + e.getLocalizacao());
+            System.out.println("ID da Cidade: " + e.getCidadeId());
+            System.out.println("Conectores Disponíveis: " + e.getTiposConectoresDisponiveis());
+            System.out.println("Potência: " + e.getPotenciaCargaKw() + " kW");
+            System.out.println("Preço por kWh: R$ " + e.getPrecoPorKwh());
+            System.out.println("Vagas Disponíveis: " + e.getVagasDisponiveis());
+
+        } else System.out.println("Eletroposto não encontrado!");
     }
 
     public void listar() {

@@ -146,7 +146,7 @@ public class Main {
 
         do {
 
-            System.out.println("\nVEICULOS ");
+            System.out.println("\nVEICULOS: ");
 
             System.out.println("1 - Cadastrar");
             System.out.println("2 - Buscar");
@@ -199,7 +199,7 @@ public class Main {
 
         do {
 
-            System.out.println("\nCIDADES");
+            System.out.println("\nCIDADES: ");
             System.out.println("1 - Cadastrar");
             System.out.println("2 - Buscar");
             System.out.println("3 - Atualizar");

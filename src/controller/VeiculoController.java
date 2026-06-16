@@ -9,8 +9,8 @@ import repository.VeiculoRepository;
 
 public class VeiculoController {
 
-    private VeiculoRepository repository;
-    private Scanner sc;
+    private final VeiculoRepository repository;
+    private final Scanner sc;
 
     public VeiculoController(VeiculoRepository repository, Scanner sc) {
         this.repository = repository;
@@ -114,11 +114,19 @@ public class VeiculoController {
         Veiculo veiculo = repository.buscarPorId(id);
 
         if (veiculo != null) {
-            System.out.println(veiculo);
+
+            System.out.println("ID: " + veiculo.getId());
+            System.out.println("Modelo: " + veiculo.getModelo());
+            System.out.println("Autonomia Máxima: " + veiculo.getAutonomiaMaxima() + " km");
+            System.out.println("Carga da Bateria: " + veiculo.getCargaBateriaAtual() + "%");
+            System.out.println("Consumo: " + veiculo.getConsumoKwhPorKm() + " kWh/km");
+            System.out.println("Tempo de Recarga Completa: " + veiculo.getTempoRecargaCompleta() + " min");
+
         } else {
             System.out.println("Veiculo não encontrado.");
         }
     }
+
 public void listar() {
 //E AQ
     Veiculo[] lista = repository.listar();
