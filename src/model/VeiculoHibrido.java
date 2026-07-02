@@ -6,20 +6,25 @@ public class VeiculoHibrido extends Veiculo {
     private double consumoCombustivel;
     private String tipoCombustivel;
 
-    public VeiculoHibrido(int id, String modelo,
-                          double autonomiaMaxima,
-                          double cargaBateriaAtual,
-                          double consumoKwhPorKm,
-                          int tempoRecargaCompleta,
-                          double capacidadeTanqueCombustivel,
-                          double consumoCombustivel,
-                          String tipoCombustivel) {
+    public VeiculoHibrido(
+            int id,
+            String modelo,
+            double autonomiaMaxima,
+            double cargaBateriaAtual,
+            double consumoKwhPorKm,
+            int tempoRecargaCompleta,
+            double capacidadeTanqueCombustivel,
+            double consumoCombustivel,
+            String tipoCombustivel) {
 
-        super(id, modelo,
+        super(
+                id,
+                modelo,
                 autonomiaMaxima,
                 cargaBateriaAtual,
                 consumoKwhPorKm,
-                tempoRecargaCompleta);
+                tempoRecargaCompleta
+        );
 
         this.capacidadeTanqueCombustivel = capacidadeTanqueCombustivel;
         this.consumoCombustivel = consumoCombustivel;
