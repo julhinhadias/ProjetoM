@@ -1,5 +1,3 @@
-package view;
-
 import java.util.Scanner;
 
 import controller.CidadeController;
