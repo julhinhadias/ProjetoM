@@ -1,73 +1,50 @@
 package repository;
 
+import java.util.ArrayList;
+
 import model.Veiculo;
 
 public class VeiculoRepository {
 
-    private Veiculo[] veiculos;
-    private int quantidade;
+    private ArrayList<Veiculo> veiculos;
 
     public VeiculoRepository() {
-        veiculos = new Veiculo[10];
-        quantidade = 0;
-    }
 
-    private void aumentarCapacidade() {
-
-        Veiculo[] novoArray = new Veiculo[veiculos.length * 2];
-
-        System.arraycopy(veiculos, 0, novoArray, 0, veiculos.length);
-
-        veiculos = novoArray;
+        veiculos = new ArrayList<>();
     }
 
     public void cadastrar(Veiculo veiculo) {
 
-        if (quantidade == veiculos.length) {
-            aumentarCapacidade();
-        }
-
-        veiculos[quantidade] = veiculo;
-        quantidade++;
+        veiculos.add(veiculo);
     }
 
     public Veiculo buscarPorId(int id) {
 
-        for (int i = 0; i < quantidade; i++) {
+        for (int i = 0; i < veiculos.size(); i++) {
 
-            if (veiculos[i].getId() == id) {
-                return veiculos[i];
+            Veiculo veiculo = veiculos.get(i);
+
+            if (veiculo.getId() == id) {
+                return veiculo;
             }
         }
 
         return null;
     }
 
-    public void atualizar(int id, Veiculo novoVeiculo) {
+    public ArrayList<Veiculo> listar() {
 
-        for (int i = 0; i < quantidade; i++) {
-
-            if (veiculos[i].getId() == id) {
-                veiculos[i] = novoVeiculo;
-                return;
-            }
-        }
-
+        return veiculos;
     }
 
     public boolean excluir(int id) {
 
-        for (int i = 0; i < quantidade; i++) {
+        for (int i = 0; i < veiculos.size(); i++) {
 
-            if (veiculos[i].getId() == id) {
+            Veiculo veiculo = veiculos.get(i);
 
-                for (int j = i; j < quantidade - 1; j++) {
-                    veiculos[j] = veiculos[j + 1];
-                }
-
-                veiculos[quantidade - 1] = null;
-                quantidade--;
-
+            if (veiculo.getId() == id) {
+                veiculos.remove(i);
                 return true;
             }
         }
@@ -75,11 +52,23 @@ public class VeiculoRepository {
         return false;
     }
 
-    public Veiculo[] listar() {
-        return veiculos;
+    public boolean atualizar(int id, Veiculo novoVeiculo) {
+
+        for (int i = 0; i < veiculos.size(); i++) {
+
+            Veiculo veiculo = veiculos.get(i);
+
+            if (veiculo.getId() == id) {
+                veiculos.set(i, novoVeiculo);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public int getQuantidade() {
-        return quantidade;
+
+        return veiculos.size();
     }
 }

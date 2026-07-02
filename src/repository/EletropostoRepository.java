@@ -1,81 +1,74 @@
 package repository;
 
+import java.util.ArrayList;
+
 import model.Eletroposto;
 
 public class EletropostoRepository {
 
-    private Eletroposto[] eletropostos;
-    private int quantidade;
+    private ArrayList<Eletroposto> eletropostos;
 
     public EletropostoRepository() {
-        eletropostos = new Eletroposto[10];
-        quantidade = 0;
-    }
-    private void aumentarCapacidade() {
-        Eletroposto[] novoArray = new Eletroposto[eletropostos.length * 2];
 
-        System.arraycopy(eletropostos, 0, novoArray, 0, eletropostos.length);
-
-        eletropostos = novoArray;
+        eletropostos = new ArrayList<>();
     }
 
     public void cadastrar(Eletroposto eletroposto) {
 
-        if (quantidade == eletropostos.length) {
-            aumentarCapacidade();
-        }
-
-        eletropostos[quantidade] = eletroposto;
-        quantidade++;
+        eletropostos.add(eletroposto);
     }
 
     public Eletroposto buscarPorId(int id) {
 
-        for (int i = 0; i < quantidade; i++) {
+        for (int i = 0; i < eletropostos.size(); i++) {
 
-            if (eletropostos[i].getId() == id) {
-                return eletropostos[i];
+            Eletroposto eletroposto = eletropostos.get(i);
+
+            if (eletroposto.getId() == id) {
+                return eletroposto;
             }
         }
 
         return null;
     }
 
-    public boolean atualizar(int id, Eletroposto novoEletroposto) {
+    public ArrayList<Eletroposto> listar() {
 
-        for (int i = 0; i < quantidade; i++) {
-
-            if (eletropostos[i].getId() == id) {
-                eletropostos[i] = novoEletroposto;
-                return true;
-            }
-        }
-
-        return false;
+        return eletropostos;
     }
 
     public boolean excluir(int id) {
 
-        for (int i = 0; i < quantidade; i++) {
+        for (int i = 0; i < eletropostos.size(); i++) {
 
-            if (eletropostos[i].getId() == id) {
+            Eletroposto eletroposto = eletropostos.get(i);
 
-                for (int j = i; j < quantidade - 1; j++) {
-                    eletropostos[j] = eletropostos[j + 1];
-                }
-
-                eletropostos[quantidade - 1] = null;
-                quantidade--;
-
+            if (eletroposto.getId() == id) {
+                eletropostos.remove(i);
                 return true;
             }
         }
+
         return false;
     }
-    public Eletroposto[] listar() {
-        return eletropostos;
+
+    public boolean atualizar(int id, Eletroposto novoEletroposto) {
+
+        for (int i = 0; i < eletropostos.size(); i++) {
+
+            Eletroposto eletroposto = eletropostos.get(i);
+
+            if (eletroposto.getId() == id) {
+                eletropostos.set(i, novoEletroposto);
+                return true;
+            }
+        }
+
+        return false;
     }
+
     public int getQuantidade() {
-        return quantidade;
+
+        return eletropostos.size();
     }
 }

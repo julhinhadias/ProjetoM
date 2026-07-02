@@ -5,7 +5,8 @@ public class VeiculoEletrico extends Veiculo {
     private String tipoConector;
     private int tempoRecargaRapida;
 
-    public VeiculoEletrico(int id, String modelo,
+    public VeiculoEletrico(int id,
+                           String modelo,
                            double autonomiaMaxima,
                            double cargaBateriaAtual,
                            double consumoKwhPorKm,
@@ -13,7 +14,9 @@ public class VeiculoEletrico extends Veiculo {
                            String tipoConector,
                            int tempoRecargaRapida) {
 
-        super(id, modelo, autonomiaMaxima,
+        super(id,
+                modelo,
+                autonomiaMaxima,
                 cargaBateriaAtual,
                 consumoKwhPorKm,
                 tempoRecargaCompleta);
@@ -23,29 +26,33 @@ public class VeiculoEletrico extends Veiculo {
     }
 
     public String getTipoConector() {
+
         return tipoConector;
     }
 
     public void setTipoConector(String tipoConector) {
+
         this.tipoConector = tipoConector;
     }
 
     public int getTempoRecargaRapida() {
+
         return tempoRecargaRapida;
     }
 
     public void setTempoRecargaRapida(int tempoRecargaRapida) {
+
         this.tempoRecargaRapida = tempoRecargaRapida;
     }
 
     @Override
     public String toString() {
+
         return "Veiculo Eletrico" +
-                "id=" + getId() +
-                "- modelo='" + getModelo() + '\'' +
-                "- autonomiaMaxima=" + getAutonomiaMaxima() +
-                "- bateria=" + getCargaBateriaAtual() +
-                "- tipoConector='" + tipoConector + '\'' +
-                '}';
+                " - ID: " + getId() +
+                " - Modelo: " + getModelo() +
+                " - Autonomia Máxima: " + getAutonomiaMaxima() +
+                " km - Bateria: " + getCargaBateriaAtual() +
+                "% - Tipo de Conector: " + tipoConector;
     }
 }

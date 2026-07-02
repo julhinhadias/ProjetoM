@@ -1,74 +1,50 @@
 package repository;
 
+import java.util.ArrayList;
+
 import model.Cidade;
 
 public class CidadeRepository {
 
-    private Cidade[] cidades;
-    private int quantidade;
+    private ArrayList<Cidade> cidades;
 
     public CidadeRepository() {
-        cidades = new Cidade[10];
-        quantidade = 0;
-    }
 
-    private void aumentarCapacidade() {
-
-        Cidade[] novoArray = new Cidade[cidades.length * 2];
-
-        System.arraycopy(cidades, 0, novoArray, 0, cidades.length);
-
-        cidades = novoArray;
+        cidades = new ArrayList<>();
     }
 
     public void cadastrar(Cidade cidade) {
 
-        if (quantidade == cidades.length) {
-            aumentarCapacidade();
-        }
-
-        cidades[quantidade] = cidade;
-        quantidade++;
+        cidades.add(cidade);
     }
 
     public Cidade buscarPorId(int id) {
 
-        for (int i = 0; i < quantidade; i++) {
+        for (int i = 0; i < cidades.size(); i++) {
 
-            if (cidades[i].getId() == id) {
-                return cidades[i];
+            Cidade cidade = cidades.get(i);
+
+            if (cidade.getId() == id) {
+                return cidade;
             }
         }
 
         return null;
     }
 
-    public boolean atualizar(int id, Cidade novaCidade) {
+    public ArrayList<Cidade> listar() {
 
-        for (int i = 0; i < quantidade; i++) {
-
-            if (cidades[i].getId() == id) {
-                cidades[i] = novaCidade;
-                return true;
-            }
-        }
-
-        return false;
+        return cidades;
     }
 
     public boolean excluir(int id) {
 
-        for (int i = 0; i < quantidade; i++) {
+        for (int i = 0; i < cidades.size(); i++) {
 
-            if (cidades[i].getId() == id) {
+            Cidade cidade = cidades.get(i);
 
-                for (int j = i; j < quantidade - 1; j++) {
-                    cidades[j] = cidades[j + 1];
-                }
-
-                cidades[quantidade - 1] = null;
-                quantidade--;
-
+            if (cidade.getId() == id) {
+                cidades.remove(i);
                 return true;
             }
         }
@@ -76,11 +52,23 @@ public class CidadeRepository {
         return false;
     }
 
-    public Cidade[] listar() {
-        return cidades;
+    public boolean atualizar(int id, Cidade novaCidade) {
+
+        for (int i = 0; i < cidades.size(); i++) {
+
+            Cidade cidade = cidades.get(i);
+
+            if (cidade.getId() == id) {
+                cidades.set(i, novaCidade);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public int getQuantidade() {
-        return quantidade;
+
+        return cidades.size();
     }
 }
