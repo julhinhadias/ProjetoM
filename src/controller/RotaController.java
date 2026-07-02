@@ -2,9 +2,13 @@ package controller;
 
 import java.util.ArrayList;
 
+import exception.AutonomiaInsuficienteException;
+import exception.ConectorIncompativelException;
+
 import model.Cidade;
 import model.Eletroposto;
 import model.Veiculo;
+import model.VeiculoEletrico;
 
 import repository.CidadeRepository;
 import repository.EletropostoRepository;
@@ -34,11 +38,11 @@ public class RotaController {
                 cidadeRepository.buscarPorId(cidadeId);
 
         if (veiculo == null) {
-            return "Veiculo não encontrado.";
+            throw new IllegalArgumentException("Veículo não encontrado.");
         }
 
         if (cidade == null) {
-            return "Cidade não encontrada.";
+            throw new IllegalArgumentException("Cidade não encontrada.");
         }
 
         double autonomiaAtual =
@@ -51,9 +55,9 @@ public class RotaController {
 
         resultado += "\nSIMULAÇÃO DE VIAGEM\n";
         resultado += "--------------------------\n";
-        resultado += "Veiculo: " + veiculo.getModelo() + "\n";
+        resultado += "Veículo: " + veiculo.getModelo() + "\n";
         resultado += "Destino: " + cidade.getNome() + "\n";
-        resultado += "Distancia da capital: " + distancia + " km\n";
+        resultado += "Distância da capital: " + distancia + " km\n";
         resultado += "Autonomia atual: " + autonomiaAtual + " km\n";
         resultado += "--------------------------\n";
 
@@ -61,47 +65,87 @@ public class RotaController {
 
             resultado += "A viagem é possível com a bateria atual.\n";
 
-        } else {
+            return resultado;
+        }
 
-            resultado += "É necessária uma recarga.\n";
-            resultado += "Eletropostos disponíveis:\n";
-            resultado += "--------------------------\n";
+        ArrayList<Eletroposto> postos =
+                eletropostoRepository.listar();
 
-            ArrayList<Eletroposto> postos =
-                    eletropostoRepository.listar();
+        if (postos.size() == 0) {
 
-            if (postos.size() == 0) {
-                resultado += "Nenhum eletroposto cadastrado.\n";
-                return resultado;
-            }
+            throw new AutonomiaInsuficienteException(
+                    "A autonomia atual do veículo não é suficiente para chegar ao destino.\n\n" +
+                            "Não existe nenhum eletroposto cadastrado para auxiliar na recarga."
+            );
+        }
+
+        if (veiculo instanceof VeiculoEletrico) {
+
+            VeiculoEletrico eletrico =
+                    (VeiculoEletrico) veiculo;
+
+            String conectorVeiculo =
+                    eletrico.getTipoConector();
+
+            boolean encontrouConectorCompativel =
+                    false;
 
             for (int i = 0; i < postos.size(); i++) {
 
                 Eletroposto posto =
                         postos.get(i);
 
-                Cidade cidadePosto =
-                        cidadeRepository.buscarPorId(
-                                posto.getCidadeId()
-                        );
+                String conectoresPosto =
+                        posto.getTiposConectoresDisponiveis();
 
-                resultado += "Nome: " + posto.getNome() + "\n";
-
-                if (cidadePosto != null) {
-                    resultado += "Cidade: " + cidadePosto.getNome() + "\n";
-                } else {
-                    resultado += "Cidade: não encontrada\n";
+                if (conectoresPosto.toLowerCase().contains(
+                        conectorVeiculo.toLowerCase()
+                )) {
+                    encontrouConectorCompativel = true;
+                    break;
                 }
+            }
 
-                resultado += "Localização: " + posto.getLocalizacao() + "\n";
-                resultado += "Conectores: " + posto.getTiposConectoresDisponiveis() + "\n";
-                resultado += "Potência: " + posto.getPotenciaCargaKw() + " kW\n";
-                resultado += "Preço por kWh: R$ " + posto.getPrecoPorKwh() + "\n";
-                resultado += "Vagas disponíveis: " + posto.getVagasDisponiveis() + "\n";
-                resultado += "--------------------------\n";
+            if (!encontrouConectorCompativel) {
+
+                throw new ConectorIncompativelException(
+                        "O veículo precisa do conector " + conectorVeiculo + ", " +
+                                "mas nenhum eletroposto cadastrado possui esse conector disponível."
+                );
             }
         }
 
-        return resultado;
+        resultado += "A autonomia atual não é suficiente para chegar ao destino.\n";
+        resultado += "É necessária uma recarga.\n";
+        resultado += "Eletropostos disponíveis:\n";
+        resultado += "--------------------------\n";
+
+        for (int i = 0; i < postos.size(); i++) {
+
+            Eletroposto posto =
+                    postos.get(i);
+
+            Cidade cidadePosto =
+                    cidadeRepository.buscarPorId(
+                            posto.getCidadeId()
+                    );
+
+            resultado += "Nome: " + posto.getNome() + "\n";
+
+            if (cidadePosto != null) {
+                resultado += "Cidade: " + cidadePosto.getNome() + "\n";
+            } else {
+                resultado += "Cidade: não encontrada\n";
+            }
+
+            resultado += "Localização: " + posto.getLocalizacao() + "\n";
+            resultado += "Conectores: " + posto.getTiposConectoresDisponiveis() + "\n";
+            resultado += "Potência: " + posto.getPotenciaCargaKw() + " kW\n";
+            resultado += "Preço por kWh: R$ " + posto.getPrecoPorKwh() + "\n";
+            resultado += "Vagas disponíveis: " + posto.getVagasDisponiveis() + "\n";
+            resultado += "--------------------------\n";
+        }
+
+        throw new AutonomiaInsuficienteException(resultado);
     }
 }
