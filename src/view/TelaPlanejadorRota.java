@@ -49,7 +49,7 @@ public class TelaPlanejadorRota extends JFrame {
 
     private void configurarJanela() {
 
-        setTitle("Planejador de Rotas Inteligente");
+        setTitle("Planejador de Rotas");
         setSize(750, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -223,7 +223,7 @@ public class TelaPlanejadorRota extends JFrame {
 
     private String montarRespostaInteligente(String resultado) {
 
-        return "PLANEJADOR DE ROTAS INTELIGENTE\n" +
+        return "PLANEJADOR DE ROTAS\n" +
                 "----------------------------------------\n" +
                 "Dados reais simulados utilizados:\n" +
                 "- Clima: condição normal\n" +
@@ -231,9 +231,6 @@ public class TelaPlanejadorRota extends JFrame {
                 "- Critério: autonomia atual do veículo e distância até o destino\n" +
                 "----------------------------------------\n\n" +
                 resultado +
-                "\nObservação IA:\n" +
-                "Nesta etapa, a tela já está preparada para receber a resposta da LLM. " +
-                "Quando os monitores fornecerem a classe de comunicação com a IA, " +
-                "esse texto poderá ser substituído por uma análise gerada automaticamente.";
+                "\nObservação IA";
     }
 }

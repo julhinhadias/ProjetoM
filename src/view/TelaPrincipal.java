@@ -86,7 +86,7 @@ public class TelaPrincipal extends JFrame {
                 new JButton("Gerenciar Eletropostos");
 
         JButton botaoRotas =
-                new JButton("Planejador de Rotas Inteligente");
+                new JButton("Planejador de Rotas");
 
         JButton botaoSair =
                 new JButton("Sair");
