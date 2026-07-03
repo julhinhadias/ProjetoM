@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -73,6 +74,8 @@ public class TelaPrincipal extends JFrame {
         JLabel titulo =
                 new JLabel("GREENROUTE - SISTEMA DE ROTAS", JLabel.CENTER);
 
+        titulo.setFont(new Font("Arial", Font.BOLD, 18));
+
         JButton botaoCidades =
                 new JButton("Gerenciar Cidades");
 
@@ -123,6 +126,8 @@ public class TelaPrincipal extends JFrame {
         botaoSair.addActionListener(
                 e -> System.exit(0)
         );
+
+        TemaRosa.aplicar(getContentPane());
     }
 
     private void abrirTelaCidades() {

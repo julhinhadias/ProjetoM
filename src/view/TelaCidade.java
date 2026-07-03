@@ -127,6 +127,9 @@ public class TelaCidade extends JFrame {
         botaoVoltar.addActionListener(e -> dispose());
 
         tabela.getSelectionModel().addListSelectionListener(e -> preencherCampos());
+
+        TemaRosa.aplicar(getContentPane());
+        TemaRosa.aplicarTabela(tabela);
     }
 
     private void cadastrarCidade() {
@@ -134,16 +137,16 @@ public class TelaCidade extends JFrame {
         try {
 
             int id =
-                    Integer.parseInt(campoId.getText());
+                    converterInt(campoId.getText());
 
             String nome =
-                    campoNome.getText();
+                    campoNome.getText().trim();
 
             String estado =
-                    campoEstado.getText();
+                    campoEstado.getText().trim();
 
             double distancia =
-                    Double.parseDouble(campoDistancia.getText());
+                    converterDouble(campoDistancia.getText());
 
             if (nome.isEmpty() || estado.isEmpty()) {
 
@@ -192,16 +195,16 @@ public class TelaCidade extends JFrame {
         try {
 
             int id =
-                    Integer.parseInt(campoId.getText());
+                    converterInt(campoId.getText());
 
             String nome =
-                    campoNome.getText();
+                    campoNome.getText().trim();
 
             String estado =
-                    campoEstado.getText();
+                    campoEstado.getText().trim();
 
             double distancia =
-                    Double.parseDouble(campoDistancia.getText());
+                    converterDouble(campoDistancia.getText());
 
             if (nome.isEmpty() || estado.isEmpty()) {
 
@@ -251,7 +254,7 @@ public class TelaCidade extends JFrame {
         try {
 
             int id =
-                    Integer.parseInt(campoId.getText());
+                    converterInt(campoId.getText());
 
             int confirmacao =
                     JOptionPane.showConfirmDialog(
@@ -350,5 +353,19 @@ public class TelaCidade extends JFrame {
         campoDistancia.setText("");
 
         tabela.clearSelection();
+    }
+
+    private double converterDouble(String texto) {
+
+        return Double.parseDouble(
+                texto.trim().replace(",", ".")
+        );
+    }
+
+    private int converterInt(String texto) {
+
+        return Integer.parseInt(
+                texto.trim()
+        );
     }
 }
