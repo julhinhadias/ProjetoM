@@ -1,21 +1,12 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
-
 import controller.CidadeController;
 import model.Cidade;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.util.ArrayList;
 
 public class TelaCidade extends JFrame {
 
@@ -70,10 +61,13 @@ public class TelaCidade extends JFrame {
         painelFormulario.add(campoDistancia);
 
         JPanel painelBotoes =
-                new JPanel(new GridLayout(1, 5, 10, 10));
+                new JPanel(new GridLayout(1, 6, 10, 10));
 
         JButton botaoCadastrar =
                 new JButton("Cadastrar");
+
+        JButton botaoIA =
+                new JButton("Gerar com IA");
 
         JButton botaoAtualizar =
                 new JButton("Atualizar");
@@ -88,6 +82,7 @@ public class TelaCidade extends JFrame {
                 new JButton("Voltar");
 
         painelBotoes.add(botaoCadastrar);
+        painelBotoes.add(botaoIA);
         painelBotoes.add(botaoAtualizar);
         painelBotoes.add(botaoExcluir);
         painelBotoes.add(botaoLimpar);
@@ -117,6 +112,7 @@ public class TelaCidade extends JFrame {
         add(painelTabela, BorderLayout.CENTER);
 
         botaoCadastrar.addActionListener(e -> cadastrarCidade());
+        botaoIA.addActionListener(e -> gerarCidadeIA());
 
         botaoAtualizar.addActionListener(e -> atualizarCidade());
 
@@ -368,4 +364,56 @@ public class TelaCidade extends JFrame {
                 texto.trim()
         );
     }
-}
+
+    private void gerarCidadeIA() {
+
+        try {
+
+            service.GeminiService gemini =
+                    new service.GeminiService();
+
+            String resposta =
+                    gemini.gerarCidade();
+
+            if (resposta == null) {
+
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Erro ao consultar Gemini."
+                );
+
+                return;
+            }
+
+            String[] linhas =
+                    resposta.split("\n");
+
+            String nome =
+                    linhas[0].replace("nome=", "").trim();
+
+            String estado =
+                    linhas[1].replace("estado=", "").trim();
+
+            String distancia =
+                    linhas[2].replace("distancia=", "").trim();
+
+            campoId.setText(
+                    String.valueOf(
+                            cidadeController.listar().size() + 1
+                    )
+            );
+
+            campoNome.setText(nome);
+            campoEstado.setText(estado);
+            campoDistancia.setText(distancia);
+
+        } catch (Exception erro) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Erro ao processar resposta da IA."
+            );
+
+            erro.printStackTrace();
+        }
+    }}

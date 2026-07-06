@@ -1,6 +1,6 @@
-import javax.swing.SwingUtilities;
-
 import view.TelaPrincipal;
+
+import javax.swing.*;
 
 public class Main {
 
