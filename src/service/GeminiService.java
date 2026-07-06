@@ -121,7 +121,7 @@ public class GeminiService {
                 return null;
             }
 
-            inicio += 8; // posiciona após "text":"
+            inicio += 9; // posiciona após "text":"
 
             int fim = texto.indexOf("\"", inicio);
 
